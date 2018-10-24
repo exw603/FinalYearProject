@@ -124,9 +124,10 @@ public class UsageStatsActivity extends Activity implements OnItemSelectedListen
             calendar.set(year, month, day, 0, 0, 0);
 
             long startCal = calendar.getTimeInMillis();
-            long finshCal = System.currentTimeMillis();
+            calendar.set(year, month, day, 23, 59, 59);
+            long finishCal = calendar.getTimeInMillis();
 
-            final List<UsageStats> stats = mUsageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, startCal, finshCal);
+            final List<UsageStats> stats = mUsageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, startCal, finishCal);
 
             //If an empty list is returned from stats above then return.
             if (stats == null) {
